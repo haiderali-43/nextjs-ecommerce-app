@@ -15,7 +15,7 @@ This project is a full-featured eCommerce application built with Next.js. It inc
 - [🔒 Authentication](#-authentication)
 - [🌐 Deployment](#-deployment)
 - [🤝 Contributing](#-contributing)
-- [📜 License](#-license)
+
 
 ## ✨ Features
 
@@ -76,8 +76,6 @@ To get started with this project, follow these steps:
    Create a `.env.local` file in the root directory and add the following:
    ```env
    DATABASE_URL="your-database-url"
-   NEXTAUTH_URL="http://localhost:3000"
-   NEXTAUTH_SECRET="your-nextauth-secret"
    ```
 
 4. **Run the development server**
@@ -87,15 +85,7 @@ To get started with this project, follow these steps:
 
    Open [http://localhost:3000](http://localhost:3000) to see the app.
 
-## 📂 Directory Structure
 
-```
-nextjs-ecommerce-app/
-├── store/
-│   ├── /
-│   ├── /
-├── admin/
-```
 
 ## 📋 Usage
 
