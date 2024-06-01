@@ -34,7 +34,7 @@ const DashboardLayout = ({ children }) => {
     return (
         <div className="flex">
             {isSidebarOpen && (
-                <div ref={sidebarRef} className="fixed top-0 left-0  z-[10000] ">
+                <div ref={sidebarRef} className="fixed top-0 left-0  z-[10000] ease-in-out transition-transfrom transform delay-300 duration-1000 ">
                     <Sidebar isSidebarOpen={isSidebarOpen} />
                 </div>
             )}

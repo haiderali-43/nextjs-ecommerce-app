@@ -11,6 +11,7 @@ import {
     AccordionContent,
     AccordionItem,
     AccordionTrigger,
+
 } from "@/components/ui/accordion"
 
 
@@ -30,11 +31,11 @@ const Sidebar = ({ isSidebarOpen }) => {
 
                 {
                     title: 'Prodcuts List',
-                    link: '/products'
+                    link: '/products-list'
                 },
                 {
                     title: 'Create Products',
-                    link: '/create-products'
+                    link: '/create-product'
                 },
                 {
                     title: 'Product Reviews',
@@ -132,8 +133,8 @@ const Sidebar = ({ isSidebarOpen }) => {
     return (
 
 
-        <div className={`h-[100vh] overflow-y-scroll scrollbar-thin overflow-x-hidden w-[15rem] text-white bg-[#2b3445] px-4 py-2 ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'}`} style={{ transition: "2s" }}>
-            <div>
+        <div className={`h-[100vh] overflow-y-scroll scrollbar-thin overflow-x-hidden w-[15rem] text-white bg-[#2b3445]  px-4 py-2 ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'}`}>
+            <div className='cursor-pointer'>
                 <Image src="/logo.svg" alt="logo" width={120} height={50} className='w-auto h-auto text-white' />
             </div>
             {sidebarMenu.map((menu, index) => (
@@ -146,8 +147,8 @@ const Sidebar = ({ isSidebarOpen }) => {
 
                                     <AccordionTrigger>
                                         <div className='flex space-x-4'>
-                                            <span className='mt-1'>{menu.icon}</span>
-                                            <span>{menu.title}</span>
+                                            <span className='mt-1 text-lg'>{menu.icon}</span>
+                                            <span className='mt-1'>{menu.title}</span>
                                         </div>
                                     </AccordionTrigger>
                                     <AccordionContent>
