@@ -1,7 +1,9 @@
 {
   "compilerOptions": {
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@admin/*": ["./src/app/admin/*"],
+      "@admin/(dashboard)/*": ["./src/app/admin/(dashboard)/*"] // Add this line to map the '@admin/(dashboard)' alias to the correct path
     }
   }
 }
