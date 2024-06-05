@@ -27,7 +27,7 @@ const Sidebar = ({ isSidebarOpen, handleNavbarClose }) => {
             submenu: [
                 {
                     title: 'Products List',
-                    link: '/products-list',
+                    link: 'dashboard/products',
                 },
                 {
                     title: 'Create Products',
@@ -44,12 +44,12 @@ const Sidebar = ({ isSidebarOpen, handleNavbarClose }) => {
             icon: <LuUserCog2 />,
             submenu: [
                 {
-                    title: 'Brands List',
-                    link: '/brands',
+                    title: 'Catgories List',
+                    link: '/dashboard/categories',
                 },
                 {
-                    title: 'Create Brand',
-                    link: '/create',
+                    title: 'Create Category',
+                    link: '/dashboard/create-category',
                 },
             ],
         },
@@ -58,12 +58,12 @@ const Sidebar = ({ isSidebarOpen, handleNavbarClose }) => {
             icon: <TbGridDots />,
             submenu: [
                 {
-                    title: 'Category List',
+                    title: 'Brands List',
                     link: '/categories',
                 },
                 {
-                    title: 'Create Category',
-                    link: '/create',
+                    title: 'Create Brand',
+                    link: 'dashboard/create-brand',
                 },
             ],
         },
@@ -72,19 +72,19 @@ const Sidebar = ({ isSidebarOpen, handleNavbarClose }) => {
             icon: <LuNewspaper />,
             submenu: [
                 {
-                    title: 'Order List',
-                    link: '/order-list',
+                    title: 'Orders List',
+                    link: 'dashboard/orders',
                 },
                 {
                     title: 'Order Details',
-                    link: '/orderdetails',
+                    link: 'dashboard/order-detail',
                 },
             ],
         },
         {
             title: 'Customers',
             icon: <ImUsers />,
-            link: '/customers',
+            link: 'dashboard/customers',
         },
         {
             title: 'Refunds',

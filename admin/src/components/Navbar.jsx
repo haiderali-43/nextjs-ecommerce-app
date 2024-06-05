@@ -4,7 +4,7 @@ import { FaGlobe, FaUser, FaBell } from "react-icons/fa";
 
 const Navbar = ({ handleNavbarClose }) => {
   return (
-    <div className='flex justify-between p-4 shadow-lg fixed top-0 left-0 right-0 bg-white z-50 w-full'>
+    <div className='flex justify-between p-4 shadow-lg fixed top-0 left-0 right-0 bg-white z-50 w-full h-16'>
       <div className='flex space-x-6 ml-4'>
         <span className='text-2xl mt-1 cursor-pointer' onClick={handleNavbarClose}>
           <FaBarsStaggered />

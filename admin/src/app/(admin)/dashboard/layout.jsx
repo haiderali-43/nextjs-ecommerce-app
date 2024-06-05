@@ -52,7 +52,7 @@ const DashboardLayout = ({ children }) => {
             </div>
             <div className="flex flex-col h-screen">
                 <Navbar handleNavbarClose={handleNavbarOpen} />
-                <div className="flex-1">{children}</div>
+                <div className="flex-1 mt-16">{children}</div>
             </div>
         </div>
     );
