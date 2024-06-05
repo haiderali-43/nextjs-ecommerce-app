@@ -5,7 +5,7 @@ import { useState, useEffect, useRef } from "react";
 import { IoClose } from "react-icons/io5";
 
 const DashboardLayout = ({ children }) => {
-    const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+    const [isSidebarOpen, setIsSidebarOpen] = useState(true);
     const sidebarRef = useRef(null);
 
     const handleNavbarOpen = () => {
@@ -35,20 +35,14 @@ const DashboardLayout = ({ children }) => {
     }, [isSidebarOpen]);
 
     return (
-        <div className="">
+        <div className="bg-[#f6f9fc]">
             <div
                 ref={sidebarRef}
                 className={`fixed top-0 left-0 z-[10000] transition-transform duration-500 ease-in-out transform ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"
                     }`}
             >
-                <Sidebar isSidebarOpen={isSidebarOpen} />
-                <span
-                    className={`absolute top-2 right-6 text-xl mt-4 text-white cursor-pointer transition-transform duration-500 ease-in-out transform ${isSidebarOpen ? "rotate-0" : "rotate-45"
-                        }`}
-                    onClick={handleSidebarClose}
-                >
-                    <IoClose />
-                </span>
+                <Sidebar isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen} />
+               
             </div>
             <div className="flex flex-col h-screen">
                 <Navbar handleNavbarClose={handleNavbarOpen} />

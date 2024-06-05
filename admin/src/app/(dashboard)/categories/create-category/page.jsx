@@ -3,7 +3,7 @@ import React from 'react'
 const page = () => {
   return (
     <div>
-      this is the product page
+      This is Create Category Page
     </div>
   )
 }

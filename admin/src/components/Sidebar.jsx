@@ -5,7 +5,7 @@ import { CiShoppingBasket, CiShop } from "react-icons/ci";
 import { TbGridDots } from "react-icons/tb";
 import { ImUsers } from "react-icons/im";
 import { HiOutlineReceiptRefund } from "react-icons/hi2";
-import { IoClose } from "react-icons/io5";
+
 import Image from 'next/image';
 import {
     Accordion,
@@ -13,8 +13,15 @@ import {
     AccordionItem,
     AccordionTrigger,
 } from "@/components/ui/accordion";
+import { useRouter } from 'next/navigation';
 
-const Sidebar = ({ isSidebarOpen, handleNavbarClose }) => {
+const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
+    const router = useRouter();
+    const handleNavigation = (link) => {
+        router.push(link);
+        setIsSidebarOpen(false);
+
+    }
     const sidebarMenu = [
         {
             title: 'Dashboard',
@@ -27,15 +34,15 @@ const Sidebar = ({ isSidebarOpen, handleNavbarClose }) => {
             submenu: [
                 {
                     title: 'Products List',
-                    link: 'dashboard/products',
+                    link: '/products',
                 },
                 {
                     title: 'Create Products',
-                    link: '/create-product',
+                    link: 'products/create-product',
                 },
                 {
                     title: 'Product Reviews',
-                    link: '/product-reviews',
+                    link: 'products/product-reviews',
                 },
             ],
         },
@@ -45,11 +52,11 @@ const Sidebar = ({ isSidebarOpen, handleNavbarClose }) => {
             submenu: [
                 {
                     title: 'Catgories List',
-                    link: '/dashboard/categories',
+                    link: '/categories',
                 },
                 {
                     title: 'Create Category',
-                    link: '/dashboard/create-category',
+                    link: 'catgories/create-category',
                 },
             ],
         },
@@ -59,11 +66,11 @@ const Sidebar = ({ isSidebarOpen, handleNavbarClose }) => {
             submenu: [
                 {
                     title: 'Brands List',
-                    link: '/categories',
+                    link: '/brands',
                 },
                 {
                     title: 'Create Brand',
-                    link: 'dashboard/create-brand',
+                    link: '/brands/create-brand',
                 },
             ],
         },
@@ -73,18 +80,18 @@ const Sidebar = ({ isSidebarOpen, handleNavbarClose }) => {
             submenu: [
                 {
                     title: 'Orders List',
-                    link: 'dashboard/orders',
+                    link: '/orders',
                 },
                 {
                     title: 'Order Details',
-                    link: 'dashboard/order-detail',
+                    link: '/orders/order-detail',
                 },
             ],
         },
         {
             title: 'Customers',
             icon: <ImUsers />,
-            link: 'dashboard/customers',
+            link: '/customers',
         },
         {
             title: 'Refunds',
@@ -126,28 +133,19 @@ const Sidebar = ({ isSidebarOpen, handleNavbarClose }) => {
 
     return (
         <div
-            className={`h-[100vh] overflow-y-scroll scrollbar-thin overflow-x-hidden w-[15rem] text-white bg-[#2b3445] px-4 py-2 ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
+            className={`h-[100vh] overflow-y-scroll scrollbar-thin overflow-x-hidden w-[15rem] text-white bg-[#2b3445] transition-transform ease-in-out delay-500 px-4 py-2 ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
                 }`}
         >
             <div className='flex justify-between'>
                 <Image src='/logo.svg' alt='logo' width={120} height={50} className='w-auto h-auto text-white cursor-pointer' />
-                <span
-                    className={`text-xl mt-4 text-white cursor-pointer transition-transform duration-500 ease-in-out transform ${isSidebarOpen ? 'rotate-0' : 'rotate-45'
-                        }`}
-                    onClick={handleNavbarClose}
-                >
-                    <IoClose />
-                </span>
             </div>
             {sidebarMenu.map((menu, index) => (
                 <div key={index} className='mt-4'>
                     {!menu.submenu ? (
-                        <Link href={menu.link || '#'}>
-                            <div className='flex items-center space-x-2 p-4  cursor-pointer rounded font-medium'>
-                                <span className='mt-1 text-lg'>{menu.icon}</span>
-                                <span className='mt-1'>{menu.title}</span>
-                            </div>
-                        </Link>
+                        <div onClick={() => handleNavigation(menu.link || '#')} className='flex items-center space-x-2 p-4 cursor-pointer rounded font-medium'>
+                            <span className='mt-1 text-lg'>{menu.icon}</span>
+                            <span className='mt-1'>{menu.title}</span>
+                        </div>
                     ) : (
                         <Accordion type='single' collapsible>
                             <AccordionItem value={`item-${index}`}>
@@ -160,11 +158,9 @@ const Sidebar = ({ isSidebarOpen, handleNavbarClose }) => {
                                 <AccordionContent>
                                     <ul>
                                         {menu.submenu.map((submenu, subIndex) => (
-                                            <li key={subIndex} className=''>
-                                                <Link href={submenu.link} className='flex space-x-4 ml-4'>
-                                                    <span className='text-2xl mt-1'>.</span>
-                                                    <span className='mt-[17px]'>{submenu.title}</span>
-                                                </Link>
+                                            <li key={subIndex} onClick={() => handleNavigation(submenu.link)} className='flex space-x-4 ml-4 cursor-pointer'>
+                                                <span className='text-2xl mt-1'>.</span>
+                                                <span className='mt-[17px]'>{submenu.title}</span>
                                             </li>
                                         ))}
                                     </ul>
