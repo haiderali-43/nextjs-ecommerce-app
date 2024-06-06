@@ -116,16 +116,20 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
                     link: '/sellers',
                 },
                 {
+                    title: 'Seller Package',
+                    link: 'sellers/seller-package',
+                },
+                {
                     title: 'Earning History',
-                    link: '/earning-history',
+                    link: 'sellers/earning-history',
                 },
                 {
                     title: 'Payouts',
-                    link: '/payouts',
+                    link: 'sellers/payouts',
                 },
                 {
                     title: 'Payout Requests',
-                    link: '/payout-requests',
+                    link: 'sellers/payout-requests',
                 },
             ],
         },
