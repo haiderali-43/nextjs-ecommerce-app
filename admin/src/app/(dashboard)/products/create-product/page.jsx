@@ -5,7 +5,9 @@ const page = () => {
   return (
     <div className='p-4'>
       <h1 className='text-2xl font-semibold'>Add New Product</h1>
-      <AddProductForm />
+      <div className='mt-4'>
+        <AddProductForm />
+      </div>
 
     </div>
   )
