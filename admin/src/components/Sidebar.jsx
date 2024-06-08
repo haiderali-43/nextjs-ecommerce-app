@@ -1,11 +1,11 @@
 import React from 'react';
-import Link from 'next/link';
 import { LuLayoutDashboard, LuUserCog2, LuNewspaper } from "react-icons/lu";
 import { CiShoppingBasket, CiShop } from "react-icons/ci";
 import { TbGridDots } from "react-icons/tb";
 import { ImUsers } from "react-icons/im";
 import { HiOutlineReceiptRefund } from "react-icons/hi2";
-
+import { usePathname } from 'next/navigation';
+import Link from 'next/link';
 import Image from 'next/image';
 import {
     Accordion,
@@ -16,17 +16,21 @@ import {
 import { useRouter } from 'next/navigation';
 
 const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
+    const pathname = usePathname();
     const router = useRouter();
+
     const handleNavigation = (link) => {
+
         router.push(link);
         setIsSidebarOpen(false);
 
-    }
+    };
+
     const sidebarMenu = [
         {
             title: 'Dashboard',
             icon: <LuLayoutDashboard />,
-            link: '/dashboard',
+            link: '/admin/dashboard',
         },
         {
             title: 'Products',
@@ -34,15 +38,15 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
             submenu: [
                 {
                     title: 'Products List',
-                    link: '/products',
+                    link: '/admin/products',
                 },
                 {
                     title: 'Create Products',
-                    link: 'products/create-product',
+                    link: '/admin/products/create-product',
                 },
                 {
                     title: 'Product Reviews',
-                    link: 'products/product-reviews',
+                    link: '/admin/products/product-reviews',
                 },
             ],
         },
@@ -51,12 +55,12 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
             icon: <LuUserCog2 />,
             submenu: [
                 {
-                    title: 'Catgories List',
-                    link: '/categories',
+                    title: 'Categories List',
+                    link: '/admin/categories',
                 },
                 {
                     title: 'Create Category',
-                    link: 'catgories/create-category',
+                    link: '/admin/categories/create-category',
                 },
             ],
         },
@@ -66,11 +70,11 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
             submenu: [
                 {
                     title: 'Brands List',
-                    link: '/brands',
+                    link: '/admin/brands',
                 },
                 {
                     title: 'Create Brand',
-                    link: '/brands/create-brand',
+                    link: '/admin/brands/create-brand',
                 },
             ],
         },
@@ -80,18 +84,18 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
             submenu: [
                 {
                     title: 'Orders List',
-                    link: '/orders',
+                    link: '/admin/orders',
                 },
                 {
                     title: 'Order Details',
-                    link: '/orders/order-detail',
+                    link: '/admin/orders/order-detail',
                 },
             ],
         },
         {
             title: 'Customers',
             icon: <ImUsers />,
-            link: '/customers',
+            link: '/admin/customers',
         },
         {
             title: 'Refunds',
@@ -99,11 +103,11 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
             submenu: [
                 {
                     title: 'Refund Requests',
-                    link: '/refunds',
+                    link: '/admin/refunds',
                 },
                 {
                     title: 'Refund Details',
-                    link: '/refunddetails',
+                    link: '/admin/refunds/refund-details',
                 },
             ],
         },
@@ -113,23 +117,23 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
             submenu: [
                 {
                     title: 'Sellers List',
-                    link: '/sellers',
+                    link: '/admin/sellers',
                 },
                 {
                     title: 'Seller Package',
-                    link: 'sellers/seller-package',
+                    link: '/admin/sellers/seller-package',
                 },
                 {
                     title: 'Earning History',
-                    link: 'sellers/earning-history',
+                    link: '/admin/sellers/earning-history',
                 },
                 {
                     title: 'Payouts',
-                    link: 'sellers/payouts',
+                    link: '/admin/sellers/payouts',
                 },
                 {
                     title: 'Payout Requests',
-                    link: 'sellers/payout-requests',
+                    link: '/admin/sellers/payout-requests',
                 },
             ],
         },
@@ -143,10 +147,15 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
             <div className='flex justify-between'>
                 <Image src='/logo.svg' alt='logo' width={120} height={50} className='w-auto h-auto text-white cursor-pointer' />
             </div>
+            <h2 className='relative top-4 left-3'>Admin</h2>
             {sidebarMenu.map((menu, index) => (
                 <div key={index} className='mt-4'>
                     {!menu.submenu ? (
-                        <div onClick={() => handleNavigation(menu.link || '#')} className='flex items-center space-x-2 p-4 cursor-pointer rounded font-medium'>
+                        <div
+                            onClick={() => handleNavigation(menu.link || '#')}
+                            className={`flex items-center space-x-2 p-4 cursor-pointer rounded font-light -mb-5 ${pathname === menu.link ? 'bg-gray-700' : ''
+                                }`}
+                        >
                             <span className='mt-1 text-lg'>{menu.icon}</span>
                             <span className='mt-1'>{menu.title}</span>
                         </div>
@@ -162,7 +171,12 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
                                 <AccordionContent>
                                     <ul>
                                         {menu.submenu.map((submenu, subIndex) => (
-                                            <li key={subIndex} onClick={() => handleNavigation(submenu.link)} className='flex space-x-4 ml-4 cursor-pointer'>
+                                            <li
+                                                key={subIndex}
+                                                onClick={() => handleNavigation(submenu.link)}
+                                                className={`flex space-x-4 ml-4 cursor-pointer ${pathname === submenu.link ? 'bg-gray-700' : ''
+                                                    }`}
+                                            >
                                                 <span className='text-2xl mt-1'>.</span>
                                                 <span className='mt-[17px]'>{submenu.title}</span>
                                             </li>
