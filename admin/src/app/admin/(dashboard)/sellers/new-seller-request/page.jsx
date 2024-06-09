@@ -3,7 +3,7 @@ import React from 'react'
 const page = () => {
   return (
     <div>
-      this is dashboard page
+      This is shop setting page
     </div>
   )
 }

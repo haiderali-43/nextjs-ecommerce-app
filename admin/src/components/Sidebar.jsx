@@ -1,11 +1,11 @@
 import React from 'react';
 import { LuLayoutDashboard, LuUserCog2, LuNewspaper } from "react-icons/lu";
-import { CiShoppingBasket, CiShop } from "react-icons/ci";
+import { CiShoppingBasket, CiShop, CiSettings, CiLogout } from "react-icons/ci";
 import { TbGridDots } from "react-icons/tb";
 import { ImUsers } from "react-icons/im";
 import { HiOutlineReceiptRefund } from "react-icons/hi2";
 import { usePathname } from 'next/navigation';
-import Link from 'next/link';
+
 import Image from 'next/image';
 import {
     Accordion,
@@ -124,6 +124,10 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
                     link: '/admin/sellers/seller-package',
                 },
                 {
+                    title: "New Sellers Request",
+                    link: '/admin/sellers/new-seller-request',
+                },
+                {
                     title: 'Earning History',
                     link: '/admin/sellers/earning-history',
                 },
@@ -136,6 +140,21 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
                     link: '/admin/sellers/payout-requests',
                 },
             ],
+        },
+        {
+            title: 'Account Settings',
+            icon: <LuUserCog2 />,
+            link: '/admin/account-settings',
+        },
+        {
+            title: "Site Settings",
+            icon: <CiSettings />,
+            link: '/admin/site-settings',
+        },
+        {
+            title: 'Logout',
+            icon: <CiLogout />,
+            link: '/admin/logout',
         },
     ];
 
@@ -153,7 +172,7 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
                     {!menu.submenu ? (
                         <div
                             onClick={() => handleNavigation(menu.link || '#')}
-                            className={`flex items-center space-x-2 p-4 cursor-pointer rounded font-light -mb-5 ${pathname === menu.link ? 'bg-gray-700' : ''
+                            className={`flex items-center space-x-2 p-4 cursor-pointer rounded font-semibold -mb-5 text-sm ${pathname === menu.link ? 'underline font-bold' : ''
                                 }`}
                         >
                             <span className='mt-1 text-lg'>{menu.icon}</span>
@@ -163,7 +182,7 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
                         <Accordion type='single' collapsible>
                             <AccordionItem value={`item-${index}`}>
                                 <AccordionTrigger>
-                                    <div className='flex items-center space-x-2 p-4 cursor-pointer rounded'>
+                                    <div className='flex items-center space-x-2 p-4 cursor-pointer rounded text-sm'>
                                         <span className='mt-1 text-lg'>{menu.icon}</span>
                                         <span className='mt-1'>{menu.title}</span>
                                     </div>
@@ -174,14 +193,16 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
                                             <li
                                                 key={subIndex}
                                                 onClick={() => handleNavigation(submenu.link)}
-                                                className={`flex space-x-4 ml-4 cursor-pointer ${pathname === submenu.link ? 'bg-gray-700' : ''
-                                                    }`}
+                                                className={`flex space-x-4 ml-4 cursor-pointer`}
                                             >
-                                                <span className='text-2xl mt-1'>.</span>
-                                                <span className='mt-[17px]'>{submenu.title}</span>
+                                                <span className='text-2xl mt-1 no-underline'>.</span>
+                                                <span className={`mt-[17px] ${pathname === submenu.link ? 'underline font-bold' : ''}`}>
+                                                    {submenu.title}
+                                                </span>
                                             </li>
                                         ))}
                                     </ul>
+
                                 </AccordionContent>
                             </AccordionItem>
                         </Accordion>
