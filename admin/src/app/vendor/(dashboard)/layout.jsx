@@ -1,8 +1,8 @@
 "use client";
 import Navbar from "@/components/Navbar";
-import Sidebar from "@/components/AdminSidebar";
+import Sidebar from "@/components/VendorSidebar";
 import { useState, useEffect, useRef } from "react";
-import { IoClose } from "react-icons/io5";
+
 
 const DashboardLayout = ({ children }) => {
     const [isSidebarOpen, setIsSidebarOpen] = useState(true);

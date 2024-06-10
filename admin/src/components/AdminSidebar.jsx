@@ -142,6 +142,25 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
             ],
         },
         {
+            title: 'Coupons',
+            icon: <LuNewspaper />,
+            submenu: [
+                {
+                    title: 'Coupons List',
+                    link: '/admin/coupons',
+                },
+                {
+                    title: 'Create Coupon',
+                    link: '/admin/coupons/create-coupon',
+                },
+            ],
+        },
+        {
+            title: "Shop Settings",
+            icon: <CiSettings />,
+            link: '/admin/shop-settings',
+        },
+        {
             title: 'Account Settings',
             icon: <LuUserCog2 />,
             link: '/admin/account-settings',

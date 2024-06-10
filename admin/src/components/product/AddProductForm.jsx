@@ -1,3 +1,4 @@
+"use client"
 import React from 'react'
 import {
     Select,
@@ -7,8 +8,31 @@ import {
     SelectValue,
 } from '../ui/select'
 import { Button } from '../ui/button'
+import Image from 'next/image'
 
 const AddProductForm = () => {
+    const [images, setImages] = React.useState([])
+
+    const handleImages = (selectedImages) => {
+        const imagesArray = Array.from(selectedImages)
+        setImages((prevImages) => [...prevImages, ...imagesArray])
+    }
+
+    const handleDrop = (e) => {
+        e.preventDefault()
+        const droppedImages = e.dataTransfer.files
+        handleImages(droppedImages)
+    }
+
+    const handleDragOver = (e) => {
+        e.preventDefault()
+    }
+
+    const handleImageUpload = (e) => {
+        const selectedImages = e.target.files
+        handleImages(selectedImages)
+    }
+
     return (
         <div className='border border-gray-400 shadow-lg ring-0 px-6 py-6 rounded-md bg-white'>
             {/* Name and category inputs */}
@@ -30,12 +54,24 @@ const AddProductForm = () => {
                 </div>
             </div>
             {/* Images */}
-            <div className="bg-gray-100 rounded-md h-48 mt-4 flex flex-col justify-center items-center border-2 border-dashed border-gray-300 p-4 ">
+            <div className="bg-gray-100 rounded-md h-48 mt-4 flex flex-col justify-center items-center border-2 border-dashed border-gray-300 p-4 " onDrop={handleDrop} onDragOver={handleDragOver}>
                 <p className="text-gray-400 mb-4 md:mb-20">Drag & Drop images here</p>
-                <input type="file" className="hidden" id="file-upload" />
+                <input type="file" className="hidden" id="file-upload" multiple onChange={handleImageUpload} />
                 <label htmlFor="file-upload" className="bg-blue-500 text-white px-4 py-2 rounded cursor-pointer hover:bg-blue-600">
                     Browse Files
                 </label>
+            </div>
+            {/* Images preview */}
+            <div className='flex flex-wrap mt-4'>
+                {images.length > 0 && (
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 w-full">
+                        {images.map((image, index) => (
+                            <div key={index} className='relative w-full h-32 bg-gray-100 rounded-md flex justify-center items-center'>
+                                <Image src={URL.createObjectURL(image)} alt={`image-${index}`} className='w-full h-full object-cover rounded-md' width={500} height={500} />
+                            </div>
+                        ))}
+                    </div>
+                )}
             </div>
             {/* Description */}
             <div>
