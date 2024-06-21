@@ -22,7 +22,8 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
     const handleNavigation = (link) => {
 
         router.push(link);
-        setIsSidebarOpen(false);
+        
+
 
     };
 
@@ -103,11 +104,11 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
             submenu: [
                 {
                     title: 'Refund Requests',
-                    link: '/admin/refunds',
+                    link: '/admin/refund-requests',
                 },
                 {
                     title: 'Refund Details',
-                    link: '/admin/refunds/refund-details',
+                    link: '/admin/refund-settings',
                 },
             ],
         },
@@ -191,18 +192,18 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
                     {!menu.submenu ? (
                         <div
                             onClick={() => handleNavigation(menu.link || '#')}
-                            className={`flex items-center space-x-2 p-4 cursor-pointer rounded font-semibold -mb-5 text-sm ${pathname === menu.link ? 'underline font-bold' : ''
+                            className={`flex items-center space-x-2 p-4 cursor-pointer rounded font-semibold -mb-5 text-sm ${pathname === menu.link ? 'bg-slate-600 px-2 py-1' : ''
                                 }`}
                         >
-                            <span className='mt-1 text-lg'>{menu.icon}</span>
+                            <span className={`mt-1 text-lg hover:bg-slate-600 p-2 rounded-lg `}>{menu.icon}</span>
                             <span className='mt-1'>{menu.title}</span>
                         </div>
                     ) : (
                         <Accordion type='single' collapsible>
                             <AccordionItem value={`item-${index}`}>
                                 <AccordionTrigger>
-                                    <div className='flex items-center space-x-2 p-4 cursor-pointer rounded text-sm'>
-                                        <span className='mt-1 text-lg'>{menu.icon}</span>
+                                    <div className={`flex items-center space-x-2 p-4 cursor-pointer rounded text-sm`}>
+                                        <span className={`mt-1 text-lg hover:bg-slate-600 p-2 rounded-lg`}>{menu.icon}</span>
                                         <span className='mt-1'>{menu.title}</span>
                                     </div>
                                 </AccordionTrigger>
@@ -212,10 +213,10 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
                                             <li
                                                 key={subIndex}
                                                 onClick={() => handleNavigation(submenu.link)}
-                                                className={`flex space-x-4 ml-4 cursor-pointer`}
+                                                className={`flex space-x-2 ml-2 pl-3 pb-3 cursor-pointer ${pathname === submenu.link ? 'bg-slate-600     rounded-lg' : ''}`}
                                             >
                                                 <span className='text-2xl mt-1 no-underline'>.</span>
-                                                <span className={`mt-[17px] ${pathname === submenu.link ? 'underline font-bold' : ''}`}>
+                                                <span className={`mt-[17px]`}>
                                                     {submenu.title}
                                                 </span>
                                             </li>
