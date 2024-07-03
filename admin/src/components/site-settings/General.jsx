@@ -27,7 +27,7 @@ const General = () => {
   };
 
   return (
-    <div className='w-full px-5 py-4 md:w-[85vw]'>
+    <div className='w-full px-5 py-4 md:w-[55rem] '>
       <div className="bg-gray-100 rounded-md h-48 mt-4 flex flex-col justify-center items-center border-2 border-dashed border-gray-300 p-4 w-full">
         <p className="text-gray-400 mb-4 md:mb-20">Drag & Site Logo here</p>
         <input

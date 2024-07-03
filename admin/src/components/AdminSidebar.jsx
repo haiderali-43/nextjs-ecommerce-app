@@ -138,7 +138,7 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
                 },
                 {
                     title: 'Payout Requests',
-                    link: '/admin/sellers/payout-requests',
+                    link: '/admin/sellers/payouts-request',
                 },
             ],
         },

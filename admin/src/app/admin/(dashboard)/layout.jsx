@@ -1,8 +1,8 @@
 "use client";
 import Navbar from "@/components/Navbar";
 import Sidebar from "@/components/AdminSidebar";
-import { useState, useEffect, useRef } from "react";
-import { IoClose } from "react-icons/io5";
+import { useState, useRef } from "react";
+
 
 const DashboardLayout = ({ children }) => {
     const [isSidebarOpen, setIsSidebarOpen] = useState(true);
@@ -12,9 +12,9 @@ const DashboardLayout = ({ children }) => {
         setIsSidebarOpen(true);
     };
 
-   
+
     return (
-        <div className="bg-[#f6f9fc] flex space-x-[15rem]  h-screen">
+        <div className="bg-[#f6f9fc] flex space-x-[16rem]  h-screen">
             <div
                 ref={sidebarRef}
                 className={`fixed top-0 left-0 z-[10000] transition-transform duration-500 ease-in-out transform  ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"
