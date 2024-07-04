@@ -25,7 +25,7 @@ const Footer = () => {
     handleImages(selectedImages);
   };
   return (
-    <div className='w-full md:w-[55rem]'>
+    <div className='w-full md:w-[68rem]'>
       <div className="bg-gray-100 rounded-md h-48 mt-4 flex flex-col justify-center items-center border-2 border-dashed border-gray-300 p-4 w-full">
         <p className="text-gray-400 mb-4 md:mb-20">Drag & Site Banner Image</p>
         <input
@@ -58,12 +58,9 @@ const Footer = () => {
         )}
       </div>
       <div>
-        <textarea className='resize-none rounded-md w-full md:w-[55rem] p-2 focus:outline-none border border-gray-400' placeholder='Footer Description' rows={5}>
-
-        </textarea>
-       
-        <Button className='mt-8 w-full md:w-auto'>Save Changes</Button>
+        <textarea placeholder='Description' rows={5} className='focus:outline-none px-4 py-2 rounded-md w-full border border-gray-500 mt-4 resize-none hover:border-black transition-transform duration-150' />
       </div>
+      <Button className='mt-8 w-full md:w-auto'>Save Changes</Button>
     </div>
   )
 }

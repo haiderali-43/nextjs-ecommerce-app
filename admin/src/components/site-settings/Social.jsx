@@ -6,11 +6,11 @@ import { Button } from '../ui/button';
 
 const Social = () => {
   return (
-    <div className="p-6">
+    <div className="p-6 ">
       <div className="mb-8">
         <h1 className="text-2xl font-bold mb-4">Social Links</h1>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-[30rem] gap-y-8">
-          <div className='relative flex items-center w-full'>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-[45rem] gap-y-8">
+          <div className='relative flex items-center w-full '>
             <CiFacebook className='text-3xl text-blue-500 absolute left-2' />
             <input type="url" placeholder='https://example.com' className='pl-12 pr-4 py-2 border border-gray-300 rounded-md w-full focus:outline-none focus:border-blue-500 transition-transform duration-150 md:w-[50rem]' />
           </div>
@@ -30,7 +30,7 @@ const Social = () => {
       </div>
       <div>
         <h1 className="text-2xl font-bold mb-4">App Links</h1>
-        <div className='flex  space-x-[11rem]'>
+        <div className='flex  space-x-[26rem]'>
           <div className='relative flex items-center w-full'>
             <FaGooglePlay className='text-3xl text-blue-400 absolute left-2' />
             <input type="url" placeholder='https://example.com' className='pl-12 pr-4 py-2 border border-gray-300 rounded-md w-full focus:outline-none focus:border-blue-400 transition-transform duration-150 md:w-[50rem]' />

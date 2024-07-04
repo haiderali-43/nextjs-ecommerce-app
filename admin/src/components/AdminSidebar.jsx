@@ -2,9 +2,10 @@ import React from 'react';
 import { LuLayoutDashboard, LuUserCog2, LuNewspaper } from "react-icons/lu";
 import { CiShoppingBasket, CiShop, CiSettings, CiLogout } from "react-icons/ci";
 import { TbGridDots } from "react-icons/tb";
-import { ImUsers } from "react-icons/im";
+import { ImUsers, ImCross } from "react-icons/im";
 import { HiOutlineReceiptRefund } from "react-icons/hi2";
 import { usePathname } from 'next/navigation';
+import {FaCross} from 'react-icons/fa'
 
 import Image from 'next/image';
 import {
@@ -14,6 +15,7 @@ import {
     AccordionTrigger,
 } from "@/components/ui/accordion";
 import { useRouter } from 'next/navigation';
+import { Button } from './ui/button';
 
 const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
     const pathname = usePathname();
@@ -22,7 +24,8 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
     const handleNavigation = (link) => {
 
         router.push(link);
-        
+        setIsSidebarOpen(false);
+
 
 
     };
@@ -185,6 +188,9 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
         >
             <div className='flex justify-between'>
                 <Image src='/logo.svg' alt='logo' width={120} height={50} className='w-auto h-auto text-white cursor-pointer' />
+                <Button onClick={() => setIsSidebarOpen(false)} className='mt-2'>
+                    <ImCross />
+                </Button>
             </div>
             <h2 className='relative top-4 left-3'>Admin</h2>
             {sidebarMenu.map((menu, index) => (
