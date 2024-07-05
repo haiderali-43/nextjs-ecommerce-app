@@ -24,7 +24,7 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
     const handleNavigation = (link) => {
 
         router.push(link);
-        setIsSidebarOpen(false);
+        
 
 
 
@@ -123,13 +123,14 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
                     title: 'Sellers List',
                     link: '/admin/sellers',
                 },
-                {
-                    title: 'Seller Package',
-                    link: '/admin/sellers/seller-package',
-                },
+               
                 {
                     title: "New Sellers Request",
                     link: '/admin/sellers/new-seller-request',
+                },
+                {
+                    title: "New Sellers Payment",
+                    link: '/admin/sellers/package-payments',
                 },
                 {
                     title: 'Earning History',
