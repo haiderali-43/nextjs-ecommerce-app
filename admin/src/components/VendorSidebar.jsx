@@ -22,7 +22,7 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
     const handleNavigation = (link) => {
 
         router.push(link);
-        setIsSidebarOpen(false);
+       
 
     };
 

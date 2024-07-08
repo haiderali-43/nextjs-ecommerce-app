@@ -1,5 +1,4 @@
-"use client"
-import { Button } from '@/components/ui/button'
+
 import {
     Table,
     TableBody,
@@ -10,9 +9,7 @@ import {
 } from "@/components/ui/table"
 
 import React from 'react'
-import { Switch } from '@/components/ui/switch'
-import { IoPencil } from 'react-icons/io5'
-import { MdDelete } from 'react-icons/md'
+
 
 const TableForAll = ({ HeadOne, HeadTwo, HeadThree, HeadFour, HeadFive, HeadSix, HeadSeven, HeadEight, BodyOne, BodyTwo, BodyThree, BodyFour, BodyFive, BodySix, BodySeven, BodyEight }) => {
 
