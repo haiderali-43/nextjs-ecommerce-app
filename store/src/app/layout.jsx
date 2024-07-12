@@ -1,6 +1,9 @@
 import { Poppins } from "next/font/google";
 import "./globals.css";
 
+import NavbarStore from "@/components/NavbarStore";
+import SidebarStore from "@/components/SidebarStore";
+
 const poppins = Poppins({ subsets: ["latin"], weight: ["400", "500", "600", "700", "800", "900"] });
 
 export const metadata = {
@@ -11,7 +14,20 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={poppins.className}>{children}</body>
+      <body className={poppins.className}>
+        <div>
+          <div className="flex flex-col h-screen">
+
+            <NavbarStore />
+          </div>
+          <div className="absolute top-[17%] flex h-auto ">
+            <SidebarStore />
+            <div className="px-2">
+              {children}
+            </div>
+          </div>
+        </div>
+      </body>
     </html>
   );
 }

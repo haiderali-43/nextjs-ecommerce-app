@@ -1,10 +1,10 @@
-import NavbarStore from '@/components/NavbarStore'
+
 import React from 'react'
 
 const page = () => {
   return (
     <div>
-      <NavbarStore />
+     This is the store page
     </div>
   )
 }
