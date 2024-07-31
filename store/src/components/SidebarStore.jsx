@@ -2,7 +2,8 @@ import React from 'react';
 import { Accordion, AccordionTrigger, AccordionItem, AccordionContent } from './ui/accordion';
 import Link from 'next/link';
 
-const SidebarStore = () => {
+const SidebarStore = ({ isSidebarOpen }) => {
+
   const sidebarMenu = [
     {
       title: "Electronics",
@@ -367,7 +368,7 @@ const SidebarStore = () => {
   ];
 
   return (
-    <div className='border-r border-gray-200 w-[15rem] px-4 py-2'>
+    <div className={`px-4  border-r border-black transition-transform overflow-y-scroll  scrollbar-thin ease-in-out duration-700 overflow-x-hidden ${isSidebarOpen ? 'translate-x-0' : "-translate-x-full"} bg-blue-200  `}>
       <ul>
         {sidebarMenu.map((menu, index) => (
           <li key={index} className='py-2'>
