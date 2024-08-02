@@ -1,8 +1,9 @@
 import React from 'react';
 import { Accordion, AccordionTrigger, AccordionItem, AccordionContent } from './ui/accordion';
 import Link from 'next/link';
+import { Cross2Icon } from '@radix-ui/react-icons';
 
-const SidebarStore = ({ isSidebarOpen }) => {
+const SidebarStore = ({ isSidebarOpen, isSidebarClose}) => {
 
   const sidebarMenu = [
     {
@@ -368,8 +369,9 @@ const SidebarStore = ({ isSidebarOpen }) => {
   ];
 
   return (
-    <div className={`px-4  border-r border-black transition-transform overflow-y-scroll  scrollbar-thin ease-in-out duration-700 overflow-x-hidden ${isSidebarOpen ? 'translate-x-0' : "-translate-x-full"} bg-blue-200  `}>
-      <ul>
+    <div className={`h-[100vh] w-[20rem] transition-transform overflow-y-scroll scrollbar-thin ease-in-out duration-300 overflow-x-hidden ${isSidebarOpen ? 'translate-x-0' : "-translate-x-full"} bg-[#2b3445] text-white `}>
+      
+      <ul className=' mt-16 px-4'>
         {sidebarMenu.map((menu, index) => (
           <li key={index} className='py-2'>
             <Accordion type='single' collapsible>
@@ -381,17 +383,16 @@ const SidebarStore = ({ isSidebarOpen }) => {
                       <li key={subIndex} className='py-2'>
                         <Accordion type='single' collapsible>
                           <AccordionItem value={`submenu-${index}-${subIndex}`}>
-                            <AccordionTrigger className="text-gray-600">{submenu.title}</AccordionTrigger>
+                            <AccordionTrigger className="text-white">{submenu.title}</AccordionTrigger>
                             <AccordionContent>
                               <ul className='ml-2'>
-                                {submenu.submicromenu &&
-                                  submenu.submicromenu.map((submicromenu, submicroIndex) => (
-                                    <li key={submicroIndex} className='py-2'>
-                                      <Link href='#' className='text-sm font-semibold text-gray-400'>
-                                        {submicromenu.title}
-                                      </Link>
-                                    </li>
-                                  ))}
+                                {submenu.submicromenu && submenu.submicromenu.map((submicromenu, submicroIndex) => (
+                                  <li key={submicroIndex} className='py-2'>
+                                    <Link href='#' className='text-sm font-semibold text-white'>
+                                      {submicromenu.title}
+                                    </Link>
+                                  </li>
+                                ))}
                               </ul>
                             </AccordionContent>
                           </AccordionItem>
@@ -406,7 +407,6 @@ const SidebarStore = ({ isSidebarOpen }) => {
         ))}
       </ul>
     </div>
-  );
-};
-
+  )
+}
 export default SidebarStore;

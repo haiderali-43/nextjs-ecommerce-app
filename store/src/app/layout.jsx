@@ -5,7 +5,8 @@ import "./globals.css";
 import NavbarStore from "@/components/NavbarStore";
 import SidebarStore from "@/components/SidebarStore";
 import { metadata } from "@/lib/metaData";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import HelloUser from "@/components/HelloUser";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -13,12 +14,36 @@ const poppins = Poppins({
 });
 
 export default function RootLayout({ children }) {
-  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isHelloUserOpen, setIsHelloUserOpen] = useState(false);
+
+  const sidebarRef = useRef(null);
 
   const handleOpenSidebar = () => {
-    setSidebarOpen(!sidebarOpen);
+    setIsSidebarOpen(true);
+    setIsHelloUserOpen(true);
 
   };
+
+  const handleCloseSidebar = () => {
+    setIsSidebarOpen(false);
+    setIsHelloUserOpen(false);
+
+  };
+
+  useEffect(() => {
+    const handleOutsideClick = (event) => {
+      if (sidebarRef.current && !sidebarRef.current.contains(event.target)) {
+        handleCloseSidebar();
+      }
+    };
+
+    document.addEventListener("mousedown", handleOutsideClick);
+
+    return () => {
+      document.removeEventListener("mousedown", handleOutsideClick);
+    };
+  }, []);
 
   return (
     <html lang="en">
@@ -26,14 +51,26 @@ export default function RootLayout({ children }) {
         <title>{metadata.title}</title>
       </head>
       <body className={`${poppins.className}`}>
-        <div className="absolute left-0 top-0  z-[10000]">
-          <SidebarStore isSidebarOpen={sidebarOpen} />
+        {isSidebarOpen && (
+          <div
+            className="fixed inset-0 bg-black opacity-50"
+            onClick={handleCloseSidebar}
+          ></div>
+        )}
+        <div
+          className={`fixed left-0 top-0 z-[10000] transform transition-transform duration-700 ease-in-out ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"}`}
+          ref={sidebarRef}
+        >
+          <HelloUser handleSidebarClose={handleCloseSidebar} isHelloUserOpen={isHelloUserOpen} />
+
+          <SidebarStore isSidebarOpen={isSidebarOpen} />
+
         </div>
-        <div className="flex flex-col ">
+        <div className="flex flex-col">
           <NavbarStore handleSidebar={handleOpenSidebar} />
-           <div className="absolute top-[23%] px-2 py-1">
+          <div className="absolute top-[18%] px-2 py-1">
             {children}
-           </div>
+          </div>
         </div>
       </body>
     </html>
