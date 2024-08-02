@@ -68,7 +68,7 @@ export default function RootLayout({ children }) {
         </div>
         <div className="flex flex-col">
           <NavbarStore handleSidebar={handleOpenSidebar} />
-          <div className="absolute top-[18%] px-2 py-1">
+          <div className="absolute top-[22%] px-2 py-1">
             {children}
           </div>
         </div>

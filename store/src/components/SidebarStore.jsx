@@ -3,7 +3,7 @@ import { Accordion, AccordionTrigger, AccordionItem, AccordionContent } from './
 import Link from 'next/link';
 import { Cross2Icon } from '@radix-ui/react-icons';
 
-const SidebarStore = ({ isSidebarOpen, isSidebarClose}) => {
+const SidebarStore = ({ isSidebarOpen }) => {
 
   const sidebarMenu = [
     {
@@ -12,9 +12,19 @@ const SidebarStore = ({ isSidebarOpen, isSidebarClose}) => {
         {
           title: "Mobiles Phones",
           submicromenu: [
-            { title: "Smart Phones" },
-            { title: "Feature Phones" },
-            { title: "Phone Accessories" }
+            {
+              title: "Smart Phones",
+              link: "/electronics/mobiles/smart-phones",
+            },
+            {
+              title: "Feature Phones",
+              link: "/electronics/mobiles/feature-phones"
+            },
+            {
+              title: "Phone Accessories",
+              link: "/electronics/mobiles/phone-accessories"
+
+            }
           ]
         },
         {
@@ -370,7 +380,7 @@ const SidebarStore = ({ isSidebarOpen, isSidebarClose}) => {
 
   return (
     <div className={`h-[100vh] w-[20rem] transition-transform overflow-y-scroll scrollbar-thin ease-in-out duration-300 overflow-x-hidden ${isSidebarOpen ? 'translate-x-0' : "-translate-x-full"} bg-[#2b3445] text-white `}>
-      
+
       <ul className=' mt-16 px-4'>
         {sidebarMenu.map((menu, index) => (
           <li key={index} className='py-2'>
