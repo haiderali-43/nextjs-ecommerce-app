@@ -7,7 +7,7 @@ const HelloUser = ({ handleSidebarClose, isHelloUserOpen }) => {
         <div className={cn(`fixed top-0 w-full text-white flex justify-between bg-slate-700 px-5 py-4 z-10 transform transition-transform ease-in-out duration-300 ${isHelloUserOpen ? "translate-x-0" : "-translate-x-full"} `)}>
             <p className='flex space-x-10'>
                 <span>
-                    <FaUser className='h-5 w-6  text-white mt-1' />
+                    <FaUser className='h-5 w-6 cursor-pointer  text-white mt-1' />
                 </span>
                 <span className='text-lg'>Hello Haider Ali</span>
             </p>

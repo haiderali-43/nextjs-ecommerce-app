@@ -22,13 +22,11 @@ export default function RootLayout({ children }) {
   const handleOpenSidebar = () => {
     setIsSidebarOpen(true);
     setIsHelloUserOpen(true);
-
   };
 
   const handleCloseSidebar = () => {
     setIsSidebarOpen(false);
     setIsHelloUserOpen(false);
-
   };
 
   useEffect(() => {
@@ -50,7 +48,7 @@ export default function RootLayout({ children }) {
       <head>
         <title>{metadata.title}</title>
       </head>
-      <body className={`${poppins.className}`}>
+      <body className={`${poppins.className} h-screen`}>
         {isSidebarOpen && (
           <div
             className="fixed inset-0 bg-black opacity-50"
@@ -62,13 +60,11 @@ export default function RootLayout({ children }) {
           ref={sidebarRef}
         >
           <HelloUser handleSidebarClose={handleCloseSidebar} isHelloUserOpen={isHelloUserOpen} />
-
           <SidebarStore isSidebarOpen={isSidebarOpen} />
-
         </div>
-        <div className="flex flex-col">
+        <div className="flex flex-col h-screen">
           <NavbarStore handleSidebar={handleOpenSidebar} />
-          <div className="absolute top-[22%] px-2 py-1">
+          <div className="absolute top-36 py-2 px-4">
             {children}
           </div>
         </div>
