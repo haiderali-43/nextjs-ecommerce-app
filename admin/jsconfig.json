@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "paths": {
+      "@/*": ["./src/*"],
+      "@admin/*": ["./src/app/admin/*"],
+      "@admin/(dashboard)/*": ["./src/app/admin/(dashboard)/*"] // Update the path to point to the correct location
+    }
+  }
+}
