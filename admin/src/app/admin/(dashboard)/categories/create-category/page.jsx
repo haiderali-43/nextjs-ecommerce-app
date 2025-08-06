@@ -77,16 +77,14 @@ const Page = () => {
                 />
               </div>
               <div className='flex-1'>
-                <Select value={parentCategory} onValueChange={(value) => setParentCategory(value)}>
-                  <SelectTrigger className='w-full py-2 hover:border-black transition-transform duration-150'>
-                    <SelectValue placeholder='Parent Categories' />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value='light'>Light</SelectItem>
-                    <SelectItem value='dark'>Dark</SelectItem>
-                    <SelectItem value='system'>System</SelectItem>
-                  </SelectContent>
-                </Select>
+                <select value={parentCategory} onChange={(e) => setParentCategory(e.target.value)}>
+                  <option value='' disabled>
+                    Parent Categories
+                  </option>
+                  <option value='light'>Light</option>
+                  <option value='dark'>Dark</option>
+                  <option value='system'>System</option>
+                </select>
               </div>
             </div>
 

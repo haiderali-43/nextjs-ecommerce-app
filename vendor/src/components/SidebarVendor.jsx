@@ -35,7 +35,7 @@ const Sidebar = () => {
     console.log(name)
   }
   return (
-    <div className=' border-l-black border-r-2 h-[100vh] p-2 flex flex-col justify-between absolute top-0 left-0 z-[-100000]'>
+    <div className=' border-l-black border-r-2 h-[100vh] p-2 flex flex-col justify-between z-[-100000]'>
       <div className='flex items-center justify-center h-16 bg-white rounded-lg mb-4'>
         <Image
           src='/logo-removebg-preview.png'
@@ -54,7 +54,7 @@ const Sidebar = () => {
             {item.submenu?.length > 0 && (
               <ul className='ml-4 mt-4 flex flex-col gap-5'>
                 {item.submenu.map((subitem, subindex) => (
-                  <li key={`submenu-item-${index}-${subindex}`} className='flex items-center gap-4 text-gray-400 hover:text-white cursor-pointer' onClick={() => handleClick(subitem.name)}>
+                  <li key={`submenu-item-${index}-${subindex}`} className='flex items-center gap-4 text-gray-400 cursor-pointer' onClick={() => handleClick(subitem.name)}>
                     {subitem.icon}
                     <span>{subitem.name}</span>
                   </li>
