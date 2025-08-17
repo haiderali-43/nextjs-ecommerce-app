@@ -1,8 +1,8 @@
-import Image from 'next/image'
 import React from 'react'
 
 import { TbHomeDollar, TbRefresh, TbReportAnalytics } from "react-icons/tb";
 import { FaBars, FaStar, FaOpencart, FaPager } from "react-icons/fa";
+import { LuNotebookTabs } from "react-icons/lu";
 
 const Sidebar = () => {
   const sidebararray = [
@@ -12,6 +12,7 @@ const Sidebar = () => {
       submenu: [
         { name: 'Products', icon: <FaBars size={20} />, path: '/products' },
         { name: 'Product Reviews', icon: <FaStar size={20} />, path: '/product-reviews' },
+        { name: 'Tax', icon: <LuNotebookTabs size={20} />, path: '/tax' }
       ],
     },
     {
@@ -35,26 +36,25 @@ const Sidebar = () => {
     console.log(name)
   }
   return (
-    <div className=' border-l-black border-r-2 h-[100vh] p-2 flex flex-col justify-between z-[-100000]'>
-      <div className='flex items-center justify-center h-16 bg-white rounded-lg mb-4'>
-        <Image
-          src='/logo-removebg-preview.png'
-          height={100}
-          width={100}
-          alt='Logo'
-        />
-      </div>
-      <ul className='flex flex-col gap-4 overflow-y-auto absolute top-20 left-3 right-0 bottom-0'>
+    <div className='border-r-2 h-screen p-2 flex flex-col bg-gray-700 text-white'>
+      {/* Logo Section */}
+      <div className="border-b border-gray-400 mb-4"></div>
+      {/* Scrollable Menu Section */}
+      <ul className='flex flex-col gap-4 overflow-y-auto pr-2 '>
         {sidebararray.map((item, index) => (
           <li key={`sidebar-item-${index}`} className='flex flex-col'>
-            <div className='flex cursor-pointer items-center gap-2 text-gray-400' onClick={() => handleClick(item.name)}>
+            <div className='flex cursor-pointer items-center gap-2 text-gray-400 hover:text-white' onClick={() => handleClick(item.name)}>
               {item.icon}
               <span>{item.name}</span>
             </div>
             {item.submenu?.length > 0 && (
-              <ul className='ml-4 mt-4 flex flex-col gap-5'>
+              <ul className='ml-4 mt-2 flex flex-col gap-3'>
                 {item.submenu.map((subitem, subindex) => (
-                  <li key={`submenu-item-${index}-${subindex}`} className='flex items-center gap-4 text-gray-400 cursor-pointer' onClick={() => handleClick(subitem.name)}>
+                  <li
+                    key={`submenu-item-${index}-${subindex}`}
+                    className='flex items-center gap-2 text-gray-400 cursor-pointer hover:text-white'
+                    onClick={() => handleClick(subitem.name)}
+                  >
                     {subitem.icon}
                     <span>{subitem.name}</span>
                   </li>
