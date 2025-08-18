@@ -9,28 +9,28 @@ const Topbarmenu = () => {
     return (
         <div className="flex justify-between items-center px-6 h-[60px] bg-white shadow-md border-b">
             {/* Left Section */}
-            <div className="text-lg font-semibold text-gray-700 mr-10">Earnings</div>
+            <div className="text-lg font-semibold text-gray-700 mr-10 cursor-pointer rounded-lg bg-gray-100 hover:bg-gray-200 px-3 py-2">Earnings</div>
 
             {/* Right Menu */}
             <div className="flex items-center gap-4 text-gray-600">
                 {/* Icon buttons */}
-                <button className="p-2 rounded-full hover:bg-gray-700 transition  text-black">
+                <button className="p-3 rounded-lg hover:bg-gray-200 bg-gray-100 transition">
                     <FaLink size={18} />
                 </button>
-                <button className="p-2 rounded-full hover:bg-gray-700 transition">
+                <button className="p-3 rounded-lg hover:bg-gray-200 bg-gray-100 transition">
                     <FaGlobe size={18} />
                 </button>
-                <button className="p-2 rounded-full hover:bg-gray-700 transition">
+                <button className="p-3 rounded-lg hover:bg-gray-200 bg-gray-100 transition">
                     <FaDollarSign size={18} />
                 </button>
-                <button className="p-2 rounded-full hover:bg-gray-700 transition">
+                <button className="p-3 rounded-lg hover:bg-gray-200 bg-gray-100 transition">
                     <BsCircleHalf size={18} />
                 </button>
 
                 {/* Profile (could be avatar later) */}
-                <div className="flex items-center gap-2 cursor-pointer px-3 py-1 rounded-lg bg-gray-100 hover:bg-gray-200 transition">
-                    <span className="text-sm font-medium">Profile</span>
-                    <span onClick={handleClick}><FaArrowAltCircleDown /></span>
+                <div className="flex items-center gap-2 cursor-pointer px-3 py-1 rounded-lg bg-gray-100 hover:bg-gray-200 transition" onClick={handleClick}>
+                    <span><FaArrowAltCircleDown /></span>
+                    <span className="text-sm font-medium">Profile</span>   
                 </div>
             </div>
         </div>
