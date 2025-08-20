@@ -5,7 +5,6 @@ const page = () => {
   return (
     <div className='w-full h-full bg-gray-100 mt-[3rem]'>
       <p>Welcome to the vendor dashboard!</p>
-      <ProfileMenu />
     </div>
   )
 }

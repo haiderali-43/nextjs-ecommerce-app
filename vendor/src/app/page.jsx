@@ -1,4 +1,5 @@
 'use client'
+import Logo from '@/components/logo';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
@@ -21,7 +22,7 @@ const Page = () => {
     <div className="bg-[#f4f6f9] h-screen">
       <div className="flex flex-col justify-center items-center bg-white">
         <div className="border border-gray-400 p-4 rounded-md mt-20 shadow-[0px_0px_10px_0px_rgba(0,0,0,0.1)]">
-          <Image src={"/logo.png"} alt="logo" width={200} height={200} className="m-auto" />
+          <div className='ml-20'><Logo /></div>
           <span className="flex justify-center font-semibold">Vendor Login Portal</span>
           <form className="flex flex-col justify-center items-center space-y-2 mt-4" onSubmit={handleLogin}>
             <input
